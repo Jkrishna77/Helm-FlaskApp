@@ -22,11 +22,29 @@ This project demonstrates deploying a Python REST API using Flask, containerizin
    ```
    You should see:
    ```json
-   {"message": "Hello World"}
+   {"message": "Service is up and running!"}
    ```
 
 2. **Dockerize the Application**  
    Write a Dockerfile to containerize the Flask app.
+
+   **Commands:**
+   ```sh
+   docker build -t flask-rest-svc .
+   docker run -p 9001:9001 flask-rest-svc
+   ```
+
+   
+   **Verify:**  
+   Open your browser or use curl:
+   ```sh
+   curl http://localhost:9001/hello
+   ```
+   You should see:
+   ```json
+   {"message": "Service is up and running!"}
+   ```
+
 
 3. **Push to Docker Hub**  
    Tag and push the Docker image to your Docker Hub repository.

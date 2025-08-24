@@ -33,7 +33,6 @@ This project demonstrates deploying a Python REST API using Flask, containerizin
    docker build -t flask-rest-svc .
    docker run -p 9001:9001 flask-rest-svc
    ```
-
    
    **Verify:**  
    Open your browser or use curl:
@@ -45,9 +44,21 @@ This project demonstrates deploying a Python REST API using Flask, containerizin
    {"message": "Service is up and running!"}
    ```
 
-
 3. **Push to Docker Hub**  
    Tag and push the Docker image to your Docker Hub repository.
+
+   **Commands:**
+   ```sh
+   docker login
+   docker tag flask-rest-svc <your-dockerhub-username>/flask-rest-svc:latest
+   docker push <your-dockerhub-username>/flask-rest-svc:latest
+   ```
+
+   **To pull and run the image on any machine:**
+   ```sh
+   docker pull <your-dockerhub-username>/flask-rest-svc:latest
+   docker run -p 9001:9001 <your-dockerhub-username>/flask-rest-svc:latest
+   ```
 
 4. **Create Helm Chart**  
    Scaffold a Helm chart to manage Kubernetes deployment.

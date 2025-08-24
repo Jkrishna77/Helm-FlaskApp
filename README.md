@@ -7,6 +7,24 @@ This project demonstrates deploying a Python REST API using Flask, containerizin
 1. **Create Python REST App**  
    Build a simple REST API using Flask.
 
+   **Commands:**
+   ```sh
+   python -m venv venv
+   venv\Scripts\activate         # On Windows
+   pip install -r requirements.txt
+   python flask-rest-svc/main.py
+   ```
+
+   **Verify:**  
+   Open your browser or use curl:
+   ```sh
+   curl http://localhost:9001/hello
+   ```
+   You should see:
+   ```json
+   {"message": "Hello World"}
+   ```
+
 2. **Dockerize the Application**  
    Write a Dockerfile to containerize the Flask app.
 

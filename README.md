@@ -63,8 +63,38 @@ This project demonstrates deploying a Python REST API using Flask, containerizin
 4. **Create Helm Chart**  
    Scaffold a Helm chart to manage Kubernetes deployment.
 
+   **Commands:**
+   ```sh
+   helm create helm-flask-svc
+   ```
+   - Edit `helm-flask-svc/values.yaml` and set your Docker image:
+     ```yaml
+     image:
+       repository: <your-dockerhub-username>/flask-rest-svc
+       tag: latest
+       pullPolicy: IfNotPresent
+     service:
+       port: 9001
+     ```
+   - Update `deployment.yaml` and `service.yaml` in `helm-flask-svc/templates` if needed.
+
 5. **Install and Verify**  
    Use Helm to install the app on Kubernetes and verify the deployment.
+
+   **Commands:**
+   ```sh
+   helm install flask-rest helm-flask-svc
+   kubectl get pods
+   kubectl get svc
+   ```
+   - Find the service’s external IP or NodePort, then verify with:
+     ```sh
+     curl http://<service-ip>:9001/hello
+     ```
+   You should see:
+   ```json
+   {"message": "Service is up and running!"}
+   ```
 
 ## Prerequisites
 
